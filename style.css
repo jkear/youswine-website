@@ -112,7 +112,7 @@ img {
 /* Hero Section */
 .hero {
   min-height: 60vh;
-  background: url('../swine_melting_side.jpg') center/cover no-repeat;
+  background: url('./swine_melting_side.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,7 +227,7 @@ img {
 
 .member-card {
   background: #111;
-  border: 1px solid var(--secondary-colour);
+  border: 2px solid var(--secondary-colour);
   padding: 1.5rem;
   border-radius: 6px;
   text-align: center;
@@ -239,9 +239,9 @@ img {
 }
 
 .member-img {
-  width: 100px;
+  width: 50%;
   height: auto;
-  margin: 2 auto 1rem;
+  margin: 0 auto 1rem;
 }
 
 .member-name {
