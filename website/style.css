@@ -1,0 +1,522 @@
+/*
+  You Swine website styles
+  ------------------------
+  This stylesheet defines the look and feel of the You Swine band site. It
+  embraces a DIY punk aesthetic with high contrast colours, rough typography
+  and plenty of white space for readability. The layout is responsive,
+  collapsing gracefully on mobile screens. Feel free to adjust colours,
+  spacing or fonts to better suit your taste.
+*/
+
+/* CSS custom properties for easy theme management */
+:root {
+  --bg-colour: #0b0b0b;
+  /* almost black background */
+  --text-colour: #f5f5f5;
+  /* off‑white for body text */
+  --accent-colour: #e63946;
+  /* punky red accent */
+  --secondary-colour: #444;
+  /* muted grey for secondary buttons */
+  --max-width: 1100px;
+  --font-heading: 'Permanent Marker', cursive;
+  --font-body: 'Oswald', sans-serif;
+  --transition-duration: 0.3s;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-colour);
+  color: var(--text-colour);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-duration) ease;
+}
+
+a:hover {
+  color: var(--accent-colour);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Navigation */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  border-bottom: 1px solid var(--secondary-colour);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  /* Do not invert the logo in the nav so that the white lettering remains
+     visible on the dark navigation bar. The logo itself has a black
+     background, so leaving the filter off preserves contrast. */
+  filter: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-links li a:hover {
+  color: var(--accent-colour);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 60vh;
+  background: url('../swine_melting_side.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding-top: 4rem;
+  /* offset for fixed nav */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-logo {
+  width: 70%;
+  max-width: 500px;
+  /* filter: invert(1); removed to fix artifacts */
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-colour);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: background var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+.btn-primary {
+  background: var(--accent-colour);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #b02a37;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--accent-colour);
+  color: var(--accent-colour);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-colour);
+  color: #fff;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--accent-colour);
+  text-transform: uppercase;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
+/* Band Members */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.member-card {
+  background: #111;
+  border: 1px solid var(--secondary-colour);
+  padding: 1.5rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: transform var(--transition-duration) ease;
+}
+
+.member-card:hover {
+  transform: translateY(-5px);
+}
+
+.member-img {
+  width: 100px;
+  height: auto;
+  margin: 2 auto 1rem;
+}
+
+.member-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  color: var(--accent-colour);
+}
+
+.member-role {
+  font-weight: bold;
+  color: var(--text-colour);
+  margin-bottom: 0.5rem;
+}
+
+.member-bio {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Music */
+.music .bandcamp-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.bandcamp-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.embed-note {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: #888;
+  text-align: center;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  border: 1px solid var(--secondary-colour);
+  border-radius: 6px;
+  padding: 1rem;
+  background: #111;
+  transition: transform var(--transition-duration) ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.social-call {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+  color: var(--accent-colour);
+}
+
+.contact-item a {
+  font-size: 1rem;
+  color: var(--text-colour);
+  word-break: break-all;
+}
+
+/* Zombie Pigs Overlay */
+.zombie-pigs-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.zombie-pigs-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.zombie-pigs-img {
+  max-width: 75%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overlay-x {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 75%;
+  height: 100%;
+  border: 10px solid red;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.overlay-x::before,
+.overlay-x::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 10px;
+  background: red;
+}
+
+.overlay-x::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.overlay-x::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  padding: 1.5rem 0;
+  text-align: center;
+  border-top: 1px solid var(--secondary-colour);
+}
+
+.footer p {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .hero-logo {
+    width: 90%;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  .nav-links li a {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* Team Photo with Annotations */
+.team-photo-container {
+  margin-top: 14rem;
+  text-align: center;
+}
+
+.team-photo-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.team-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  /* Invisible border */
+}
+
+.annotations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.annotation {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Hide labels as requested */
+.annotation .label {
+  display: none;
+}
+
+.annotation .arrow {
+  position: absolute;
+  bottom: 10px;
+  /* Start 10px above the photo */
+  width: 4px;
+  background: var(--accent-colour);
+  transform-origin: bottom center;
+  /* Pivot at the bottom (near photo) */
+}
+
+.annotation .arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  /* Arrowhead at the bottom tip */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-top: 15px solid var(--accent-colour);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+/* Nick annotation - Photo Left -> Card Left (Nick) */
+.nick-annotation {
+  left: 20%;
+}
+
+.nick-annotation .arrow {
+  height: 200px;
+  transform: translateX(-60%) rotate(-25deg);
+}
+
+/* Jordan annotation - Photo Middle -> Card Right (Jordan) */
+.jordan-annotation {
+  left: 55%;
+}
+
+.jordan-annotation .arrow {
+  height: 350px;
+  transform: translateX(-50%) rotate(55deg);
+}
+
+/* Shaun annotation - Photo Right -> Card Middle (Shaun) */
+.shaun-annotation {
+  left: 70%;
+}
+
+.shaun-annotation .arrow {
+  height: 220px;
+  transform: translateX(-62%) rotate(-25deg);
+}
+
+/* Responsive adjustments for annotations */
+@media (max-width: 768px) {
+  .team-photo-container {
+    margin-top: 2rem;
+  }
+
+  .annotation .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Clean up unused styles */
+}
