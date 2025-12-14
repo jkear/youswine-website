@@ -378,6 +378,11 @@ img {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.muted-text-section {
+  background-color: var(--bg-colour);
+  color: #7c7c7c;
+}
+
 /* Footer */
 .footer {
   background: #111;
